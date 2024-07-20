@@ -1,9 +1,11 @@
 export async function* fetchStreamData() {
   const url = new URL('/stream', 'http://localhost:3333');
 
-  const result = await fetch(url);
+  const response = await fetch(url);
 
-  const reader = result.body?.getReader();
+  const reader = response.body
+    ?.pipeThrough(new TextDecoderStream())
+    .getReader();
 
   if (!reader) throw new Error('No reader found');
 
@@ -15,6 +17,6 @@ export async function* fetchStreamData() {
       return;
     }
 
-    yield JSON.parse(new TextDecoder().decode(value));
+    yield JSON.parse(value);
   }
 }

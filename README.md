@@ -2,4 +2,5 @@
 
 note: All requests are streams.
 
-<video src="./assets/video.mp4" width="320" height="240" controls />
+https://github.com/user-attachments/assets/f94e2fb1-b324-4f0e-825b-35b4be8c3d0a
+
